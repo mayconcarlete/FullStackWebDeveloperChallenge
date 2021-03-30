@@ -4,8 +4,9 @@
   "description": "Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc -p tsconfig-build.json",
+    "build": "npm run clean && npx tsc -p tsconfig-build.json",
     "dev": "nodemon src/index.ts"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "@types/node": "^14.14.37",
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
