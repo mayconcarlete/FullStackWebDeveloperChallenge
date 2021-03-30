@@ -42,7 +42,7 @@
     "express": "^4.17.1",
     "module-alias": "^2.2.2"
   },
-  "_moduleAliases":{
-    "@controller":"dist/presentation/controllers"
+  "_moduleAliases": {
+    "@presentation": "dist/presentation"
   }
 }
