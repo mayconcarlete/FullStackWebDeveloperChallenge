@@ -39,5 +39,9 @@ describe('Validator Composite class', () => {
         expect(error).toEqual(new MissingParamError('missing param'))
     })
 
-    
+    test('Should be falsy when validation succeeds', () => {
+        const {sut} = makeSut()
+        const error = sut.validate('valid data')
+        expect(error).toBeFalsy()
+    })
 })
