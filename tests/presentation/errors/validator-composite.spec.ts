@@ -1,36 +1,43 @@
 import { IValidate } from '@presentation/protocols/validate'
 import {ValidatorComposite} from '@presentation/validators'
-import { MissingParamError } from '.'
+import {MissingParamError} from '@presentation/errors'
 
 type SutTypes = {
     sut: IValidate
+    validations: MockValidator[]
 }
 
 class MockValidator implements IValidate{
-    constructor(
-        private readonly error: Error
-        ){}
+    error:Error | undefined = undefined
     validate(input: any): Error | undefined {
         return this.error
     }
-
-}
+}    
 
 const makeSut = ():SutTypes => {
-    const firstError = new MockValidator(new Error('first error'))
-    const secondError = new MockValidator(new Error('second error'))
-    const validations:IValidate[] = []
-    validations.push(firstError)
-    validations.push(secondError)
+    const validations:MockValidator[] = []
+    validations.push(new MockValidator())
+    validations.push(new MockValidator())
 
     const sut = new ValidatorComposite(validations)
-    return { sut }
+    return { sut, validations }
 }
 
 describe('Validator Composite class', () => {
-    test('Should return the first error when validate', () => {
-        const { sut } = makeSut()
-        const result = sut.validate('foo')
-        expect(result).toEqual(new Error('first error'))
+    test('Should return an error if any validator fails', () => {
+        const {sut, validations} = makeSut()
+        validations[1].error = new Error('any error')
+        const error = sut.validate('wrong data')
+        expect(error).toEqual(new Error('any error'))
     })
+
+    test('Should return the first error if more then one validator fails', () => {
+        const {sut, validations} = makeSut()
+        validations[0].error = new MissingParamError('missing param')
+        validations[1].error = new Error('some error')
+        const error = sut.validate('wrong data')
+        expect(error).toEqual(new MissingParamError('missing param'))
+    })
+
+    
 })
