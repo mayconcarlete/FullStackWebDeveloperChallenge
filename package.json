@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && npx tsc -p tsconfig-build.json",
+    "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
+    "post-build": "copyfiles -f ./src/database/corpus/hemingway.txt ./dist/database/corpus",
     "dev": "nodemon src/index.ts"
   },
   "repository": {
