@@ -1,5 +1,4 @@
 import 'module-alias/register'
-import 'dotenv/config'
 import {Database} from './database/index'
 import {createFakeConnection} from './database/fake-database-config'
 

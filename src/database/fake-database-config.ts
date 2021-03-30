@@ -11,7 +11,7 @@ import {
     sortWords
 } from './helpers'
 
-const pathFile = process.env.ENV === 'DEV' ? path.join(__dirname, 'corpus', 'hemingway.txt') :'foo'
+const pathFile = path.join(__dirname, 'corpus', 'hemingway.txt')
 
 const symbols = [
     '.', '?', '-', ',', '"', '♪',
