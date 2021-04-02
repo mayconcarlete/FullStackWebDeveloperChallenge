@@ -5,7 +5,7 @@ import {TypeVerificationError} from '@presentation/errors'
 type SutTypes = {
     sut:IValidate
 }
-const fieldName = 'any_value'
+const fieldName = 'field_to_validate'
 const type = 'string'
 
 const makeSut = ():SutTypes => {
@@ -18,16 +18,16 @@ describe('Type Verification class', () => {
         const { sut } = makeSut()
         const validateSpy = jest.spyOn(sut, 'validate')
         const body = {
-            any_value:"any_value"
+            [fieldName]:"any_value"
         }
         sut.validate(body)
-        expect(validateSpy).toHaveBeenCalledWith({any_value:"any_value"})
+        expect(validateSpy).toHaveBeenCalledWith({[fieldName]:"any_value"})
     })
 
     test('Should return an error if type of field are different of passed', () => {
         const {sut} = makeSut()
         const body = {
-            any_value: 10
+            [fieldName]: 10
         }
         const isType = sut.validate(body)
         expect(isType).toEqual(new TypeVerificationError(fieldName))
@@ -36,7 +36,7 @@ describe('Type Verification class', () => {
     test('Should be undefined if validation succeeds', () => {
         const {sut} = makeSut()
         const body = {
-            any_value:'valid_value'        
+            [fieldName]:'valid_value'        
         }
         const isType = sut.validate(body)
         expect(isType).toBeFalsy()
