@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "fastest-levenshtein": "^1.0.12",
     "module-alias": "^2.2.2"
   },
   "_moduleAliases": {
