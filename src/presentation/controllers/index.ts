@@ -1,0 +1,1 @@
+export { GetThreeWords } from './get-three-similar-words'

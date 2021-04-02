@@ -1,19 +1,20 @@
-export class Database {
+import { IGetWordsFromRepository } from "src/data/search-engine/protocols/get-three-words"
+
+export class Database implements IGetWordsFromRepository{
     private static instance: Database
     
     private constructor(
         private database:string[]
     ){}
-
+    
     public static getInstance(instanceConnection:string[]):Database {
         if(!Database.instance){
             Database.instance = new Database(instanceConnection)
         }
         return this.instance 
     }
-
-    get_data(){
-        return this.database
+    
+    async getWords(): Promise<string[]> {
+        return new Promise( resolve => resolve(this.database))
     }
-
 }
