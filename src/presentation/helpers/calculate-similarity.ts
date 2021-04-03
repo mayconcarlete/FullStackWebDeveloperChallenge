@@ -6,7 +6,7 @@ export class CalculateSimilarity implements ISimilarity{
     private closestsWords:string[] = []
     constructor(){}
     calculateSimilarity(word:string, wordsInDb: string[]):string[] {
-        
+        if(wordsInDb.length < 3) return wordsInDb
         while(this.closestsWords.length < 3){
             const closestWord:string = closest(word, wordsInDb)
             this.closestsWords.push(closestWord)
