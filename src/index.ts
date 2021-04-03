@@ -4,5 +4,5 @@ import {createFakeConnection} from './infra/database/fake-database-config'
 
 createFakeConnection().then( instanceConnection => {
     const db = Database.getInstance( instanceConnection )
-    console.log(db.get_data())
+
 })

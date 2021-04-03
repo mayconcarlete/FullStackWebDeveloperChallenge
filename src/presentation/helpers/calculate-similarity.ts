@@ -1,4 +1,4 @@
-import {distance, closest} from 'fastest-levenshtein'
+import {closest} from 'fastest-levenshtein'
 import { ISimilarity } from "@presentation/protocols/similarity";
 
 

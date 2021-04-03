@@ -11,5 +11,4 @@ export class GetThreeWords implements IController{
             })
         })
     }
-
 }
