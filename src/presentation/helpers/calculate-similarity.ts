@@ -7,11 +7,15 @@ export class CalculateSimilarity implements ISimilarity{
     constructor(){}
     calculateSimilarity(word:string, wordsInDb: string[]):string[] {
         if(wordsInDb.length < 3) return wordsInDb
-        while(this.closestsWords.length < 3){
-            const closestWord:string = closest(word, wordsInDb)
-            this.closestsWords.push(closestWord)
-            wordsInDb.splice(wordsInDb.indexOf(closestWord), 1)
-        }
+        this.getClosestsWords(word, wordsInDb);
         return this.closestsWords
+    }
+
+    private getClosestsWords(word: string, wordsInDb: string[]) {
+        while (this.closestsWords.length < 3) {
+            const closestWord: string = closest(word, wordsInDb);
+            this.closestsWords.push(closestWord);
+            wordsInDb.splice(wordsInDb.indexOf(closestWord), 1);
+        }
     }
 }
