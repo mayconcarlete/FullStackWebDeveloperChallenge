@@ -27,4 +27,12 @@ describe('Calculate Similarity class', () => {
         const closestsWords = sut.calculateSimilarity(word, wordsInDb)
         expect(closestsWords).toEqual(wordsInDb)
     })
+
+    test('Should return the closests 3 words with given array', () => {
+        const {sut} = makeSut()
+        const wordsInDb = ['baba', 'caca', 'zaza', 'any_value', 'foo']
+        const word = 'sasa'
+        const closestsWords = sut.calculateSimilarity(word, wordsInDb)
+        expect(closestsWords).toEqual(['baba', 'caca', 'zaza'])
+    })
 })
