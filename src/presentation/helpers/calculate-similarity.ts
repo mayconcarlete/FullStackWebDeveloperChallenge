@@ -3,8 +3,9 @@ import { ISimilarity } from "@presentation/protocols/similarity";
 
 
 export class CalculateSimilarity implements ISimilarity{
+    
     private closestsWords:string[] = []
-    constructor(){}
+    
     calculateSimilarity(word:string, wordsInDb: string[]):string[] {
         if(wordsInDb.length < 3) return wordsInDb
         this.getClosestsWords(word, wordsInDb);
