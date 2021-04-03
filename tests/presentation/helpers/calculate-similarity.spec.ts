@@ -19,4 +19,12 @@ describe('Calculate Similarity class', () => {
         sut.calculateSimilarity(word, wordsInDb)
         expect(calculateSimilaritySpy).toHaveBeenCalledWith(word, wordsInDb)
     })
+
+    test('Should return the array when array length is less than 3', () => {
+        const {sut} = makeSut()
+        const wordsInDb = ['any_value', 'any_value_2']
+        const word = 'any_word'
+        const closestsWords = sut.calculateSimilarity(word, wordsInDb)
+        expect(closestsWords).toEqual(wordsInDb)
+    })
 })
