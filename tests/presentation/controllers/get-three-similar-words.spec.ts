@@ -1,7 +1,7 @@
 import { GetThreeWords } from '@presentation/controllers'
-import { MissingParamError } from '@presentation/errors'
+import { MissingParamError, TypeVerificationError } from '@presentation/errors'
 import {IController} from '@presentation/protocols'
-import { THttpRequest } from '@presentation/types'
+import { THttpRequest, THttpResponse } from '@presentation/types'
 import { RequiredField, ValidatorComposite } from '@presentation/validators'
 import { TypeVerification } from '@presentation/validators/type-verification'
 
@@ -24,6 +24,15 @@ describe('Get Three Words class', () => {
         const request:THttpRequest = {}
         const response = await sut.handle(request)
         expect(response.body).toEqual(new MissingParamError('word'))
+        expect(response.statusCode).toBe(400)
+    })
+    test('Should return 400 if word provided are with wrong type', async () => {
+        const {sut} = makeSut()
+        const request:THttpRequest = {
+            params:{word:10}
+        }
+        const response = await sut.handle(request)
+        expect(response.body).toEqual(new TypeVerificationError('word'))
         expect(response.statusCode).toBe(400)
     })
 })
