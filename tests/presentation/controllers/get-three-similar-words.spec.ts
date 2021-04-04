@@ -13,13 +13,7 @@ type SutTypes = {
 }
 
 const makeSut = ():SutTypes => {
-    //const arrayOfValidations = []
-    //arrayOfValidations.push(new RequiredField('word'))
-    //arrayOfValidations.push(new TypeVerification('word', 'string'))
-   // arrayOfValidations.push(new MockValidator())
-   // const validatorCoposite = new ValidatorComposite(arrayOfValidations)
     const validatorSpy = new MockValidator()
-
     const sut = new GetThreeWords(validatorSpy)
     return {
         sut,
@@ -36,7 +30,6 @@ describe('Get Three Words class', () => {
             body:'body_value'
         }
         await sut.handle(request)
-        console.log(validators.input)
         expect(validators.input).toEqual(request.params)
     })
     test('Should return 400 if param is not provided', async () => {
@@ -47,31 +40,20 @@ describe('Get Three Words class', () => {
         expect(response.body).toEqual(new MissingParamError('word'))
         expect(response.statusCode).toBe(400)
     })
-})
-    /*
-    test('Should return 400 if no word is provided', async () => {
-        const {sut} = makeSut()
-        const request:THttpRequest = {}
-        const response = await sut.handle(request)
-        expect(response.body).toEqual(new MissingParamError('word'))
-        expect(response.statusCode).toBe(400)
-    })
     test('Should return 400 if word provided are with wrong type', async () => {
-        const {sut} = makeSut()
-        const request:THttpRequest = {
-            params:{word:10}
-        }
+        const {sut, validators} = makeSut()
+        const request:THttpRequest = {params:{word:10}}
+        validators.error =  new TypeVerificationError('word')
         const response = await sut.handle(request)
         expect(response.body).toEqual(new TypeVerificationError('word'))
         expect(response.statusCode).toBe(400)
-    })
-    
-    
+    })/*
     test('Should return an array with three similar results', async() => {
         const {sut} = makeSut()
         const request:THttpRequest = {
             params:{word:'car'}
         }
         const response = await sut.handle(request)
-    })
-    */
+
+    })*/
+})
