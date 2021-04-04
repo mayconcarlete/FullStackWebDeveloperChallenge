@@ -1,6 +1,7 @@
+import { IDatabase } from "@presentation/protocols/database"
 
 
-export class Database  {
+export class Database implements IDatabase {
     private static instance: Database
     
     private constructor(
@@ -12,9 +13,8 @@ export class Database  {
             Database.instance = new Database(instanceConnection)
         }
         return this.instance 
-    }
-    
-    async getWords(): Promise<string[]> {
+    }    
+    async getDatabase():Promise<string[]> {
         return new Promise( resolve => resolve(this.database))
     }
 }

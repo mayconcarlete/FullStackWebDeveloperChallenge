@@ -1,4 +1,4 @@
-import { badRequest, ok } from "@presentation/helpers/responses";
+import { badRequest, ok, serverError } from "@presentation/helpers";
 import { ISimilarity } from "@presentation/protocols/similarity";
 import { IValidate } from "@presentation/protocols/validate";
 import { IController } from "../protocols/controller";
@@ -6,13 +6,18 @@ import { THttpRequest, THttpResponse } from "../types";
 
 export class GetThreeWords implements IController{
     constructor(
-        private readonly validators: IValidate
+        private readonly validators: IValidate,
+        private readonly similarity: ISimilarity
     ){}
     async handle(request: THttpRequest): Promise<THttpResponse> {
-        const error = this.validators.validate(request.params)
-        if(error) return badRequest(error) 
-        return new Promise(resolve => {
-            resolve(ok('Hello World'))
-        })
+        try{
+            const error = this.validators.validate(request.params)
+            if(error) return badRequest(error)
+            const word = request.params.word
+            const similarWords = await this.similarity.calculateSimilarity(word)
+            return ok(similarWords)
+        }catch(e){
+            return serverError(e)
+        }
     }
 }

@@ -1,12 +1,18 @@
 import {closest} from 'fastest-levenshtein'
 import { ISimilarity } from "@presentation/protocols/similarity";
+import { IDatabase } from '@presentation/protocols/database';
 
 
 export class CalculateSimilarity implements ISimilarity{
     
     private closestsWords:string[] = []
     
-    calculateSimilarity(word:string, wordsInDb: string[]):string[] {
+    constructor(
+        private readonly database: IDatabase
+    ){}
+
+    async calculateSimilarity(word:string):Promise<string[]> {
+        const wordsInDb = await this.database.getDatabase()
         if(wordsInDb.length < 3) return wordsInDb
         this.getClosestsWords(word, wordsInDb);
         return this.closestsWords

@@ -13,3 +13,10 @@ export const ok = (data:any):THttpResponse => {
         body:data
     }
 }
+
+export const serverError = (error:Error):THttpResponse => {
+    return {
+        statusCode:500,
+        body:error
+    }
+}
