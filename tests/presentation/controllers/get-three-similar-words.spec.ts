@@ -54,4 +54,5 @@ describe('Get Three Words class', () => {
         await sut.handle(request)
         expect(validators.error).toBeFalsy()
     })
+    
 })
