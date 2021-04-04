@@ -9,7 +9,7 @@
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
     "post-build": "copyfiles -f ./src/database/corpus/hemingway.txt ./dist/database/corpus",
-    "dev": "nodemon src/index.ts"
+    "dev": "npm run build && nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
