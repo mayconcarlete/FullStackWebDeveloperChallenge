@@ -1,6 +1,6 @@
-import { IGetWordsFromRepository } from "src/data/search-engine/protocols/get-three-words"
 
-export class Database implements IGetWordsFromRepository{
+
+export class Database  {
     private static instance: Database
     
     private constructor(
