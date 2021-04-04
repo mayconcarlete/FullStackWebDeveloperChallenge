@@ -14,7 +14,8 @@ export class GetThreeWords implements IController{
             const error = this.validators.validate(request.params)
             if(error) return badRequest(error)
             const word = request.params.word
-            const similarWords = await this.similarity.calculateSimilarity(word)
+            console.log(`Looking for: ${word.toUpperCase()}`)
+            const similarWords = await this.similarity.calculateSimilarity(word.toUpperCase())
             return ok(similarWords)
         }catch(e){
             return serverError(e)

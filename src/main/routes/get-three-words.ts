@@ -1,8 +1,8 @@
 import {Application, json, Router} from 'express'
-import {GetThreeWords} from '@presentation/controllers'
 import { adaptRoute } from '../adapters/controller-adapter'
+import { makeGetThreeWordsFactory } from '../factory/get-three-words/make-get-three-words'
 
-export default function(app:Application){
-    const controller = new GetThreeWords()
-    app.get('/get-three-words', adaptRoute(controller)) 
+export default async function(app:Application){
+    const getThreeWordsFactory = await makeGetThreeWordsFactory()
+    app.get('/get-three-words/:word', adaptRoute(getThreeWordsFactory)) 
 }
