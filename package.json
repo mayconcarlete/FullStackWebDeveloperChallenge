@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "test": "jest --runInBand --no-cache --verbose",
+    "test": "jest --runInBand --no-cache --verbose --passWithNoTests",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:e2e":"npm test -- --watch -c jest-e2e-config.js",
     "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
@@ -47,6 +47,8 @@
     "module-alias": "^2.2.2"
   },
   "_moduleAliases": {
-    "@presentation": "dist/presentation"
+    "@presentation": "dist/presentation",
+    "@main":"dist/main",
+    "@infra":"dist/infra"
   }
 }

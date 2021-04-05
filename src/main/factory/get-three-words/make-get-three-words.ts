@@ -3,8 +3,8 @@ import { CalculateSimilarity } from "@presentation/helpers";
 import { IValidate } from "@presentation/protocols/validate";
 import { RequiredField, ValidatorComposite } from "@presentation/validators";
 import { TypeVerification } from "@presentation/validators/type-verification";
-import { Database } from "src/infra/database";
-import { createFakeConnection } from "src/infra/database/fake-database-config";
+import { Database } from "@infra/database";
+import { createFakeConnection } from "@infra/database/fake-database-config";
 
 export const makeGetThreeWordsFactory = async ():Promise<GetThreeWords> => {
     const fieldName = 'word'
