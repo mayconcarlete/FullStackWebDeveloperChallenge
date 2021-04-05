@@ -21,7 +21,7 @@ describe('Type Verification class', () => {
             [fieldName]:"any_value"
         }
         sut.validate(body)
-        expect(validateSpy).toHaveBeenCalledWith({[fieldName]:"any_values"})
+        expect(validateSpy).toHaveBeenCalledWith({[fieldName]:"any_value"})
     })
 
     test('Should return an error if type of field are different of passed', () => {
