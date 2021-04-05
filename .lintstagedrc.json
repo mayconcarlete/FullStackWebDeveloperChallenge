@@ -1,5 +1,5 @@
 {
     "*.ts":[
-        "npm test"
+        "npm run test:unit"
     ]
 }
