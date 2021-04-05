@@ -7,6 +7,7 @@
     "clean": "rimraf ./dist",
     "test": "jest --runInBand --no-cache --verbose",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "test:e2e":"npm test -- --watch -c jest-e2e-config.js",
     "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
     "post-build": "copyfiles -f ./src/database/corpus/hemingway.txt ./dist/database/corpus",
     "dev": "npm run build && nodemon src/index.ts"
