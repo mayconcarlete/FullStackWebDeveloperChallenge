@@ -40,6 +40,6 @@ describe('Calculate Similarity class', () => {
         mockDatabase.wordsInDb = wordsInDb
         const word = 'sasa'
         const closestsWords = await  sut.calculateSimilarity(word)
-        expect(closestsWords).toEqual(['baba', 'caca', 'zaza'])
+        expect(closestsWords).toEqual(['baba', 'caca', 'zazaa'])
     })
 })
