@@ -1,23 +1,29 @@
 import { GetThreeWords } from '@presentation/controllers'
 import { MissingParamError, TypeVerificationError } from '@presentation/errors'
+import { CalculateSimilarity } from '@presentation/helpers'
 import {IController} from '@presentation/protocols'
 import { IValidate } from '@presentation/protocols/validate'
 import { THttpRequest, THttpResponse } from '@presentation/types'
 import { RequiredField, ValidatorComposite } from '@presentation/validators'
 import { TypeVerification } from '@presentation/validators/type-verification'
+import { MockCalculateSimilarity } from '../mocks/mock-calculate-similarity'
 import {MockValidator} from '../mocks/mock-validatior'
 
 type SutTypes = {
     sut: IController,
-    validators: MockValidator 
+    validators: MockValidator,
+    similarity: MockCalculateSimilarity
 }
 
 const makeSut = ():SutTypes => {
     const validatorSpy = new MockValidator()
-    const sut = new GetThreeWords(validatorSpy)
+    const database = []
+    const similaritySpy = new MockCalculateSimilarity()
+    const sut = new GetThreeWords(validatorSpy, similaritySpy)
     return {
         sut,
-        validators: validatorSpy
+        validators: validatorSpy,
+        similarity: similaritySpy
     }
 }
 
