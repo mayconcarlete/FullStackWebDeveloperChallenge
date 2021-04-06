@@ -7,6 +7,7 @@ export class ParseInt implements IValidate{
         private readonly fieldName:string
         ){}
     validate(input: any): Error | undefined {
-        if(typeof(parseInt(input[this.fieldName])) === 'number') return new TypeVerificationError(this.fieldName)
+        console.log(isNaN(input[this.fieldName]))
+        if(!isNaN(input[this.fieldName])) return new TypeVerificationError(this.fieldName)
     }
 }
