@@ -1,6 +1,5 @@
 import { TypeVerificationError } from "@presentation/errors"
 import { IValidate } from "@presentation/protocols/validate"
-import { THttpRequest } from "@presentation/types"
 import { ParseInt } from "@presentation/validators/parse-int"
 
 type SutTypes = {
@@ -21,5 +20,13 @@ describe('Parse Int validator', () => {
         }
         const isInt = sut.validate(body)
         expect(isInt).toEqual(new TypeVerificationError(fieldName))
+    })
+    test('Should return undefined when validations succeeds', () => {
+        const {sut} = makeSut()
+        const body = {
+            [fieldName]:'valid_value'
+        }
+        const isInt = sut.validate(body)
+        expect(isInt).toBeFalsy()
     })
 })
