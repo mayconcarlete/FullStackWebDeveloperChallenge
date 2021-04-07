@@ -1,1 +1,1 @@
-export { GetThreeWords } from './get-three-similar-words'
+export { GetThreeWordsController } from './get-three-similar-words'

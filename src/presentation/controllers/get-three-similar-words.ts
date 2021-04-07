@@ -4,7 +4,7 @@ import { IValidate } from "@presentation/protocols/validate";
 import { IController } from "../protocols/controller";
 import { THttpRequest, THttpResponse } from "../types";
 
-export class GetThreeWords implements IController{
+export class GetThreeWordsController implements IController{
     constructor(
         private readonly validators: IValidate,
         private readonly similarity: ISimilarity

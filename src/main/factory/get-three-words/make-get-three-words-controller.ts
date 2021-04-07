@@ -5,7 +5,7 @@ import { RequiredField, ValidatorComposite,TypeVerification,ParseInt } from "@pr
 import { Database } from "@infra/database";
 import { createFakeConnection } from "@infra/database/fake-database-config";
 
-export const makeGetThreeWordsFactory = async ():Promise<GetThreeWordsController> => {
+export const makeGetThreeWordsControllerFactory = async ():Promise<GetThreeWordsController> => {
     const fieldName = 'word'
     const arrayOfValidations: IValidate[] = []
     arrayOfValidations.push(new RequiredField(fieldName))

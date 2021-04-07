@@ -1,4 +1,4 @@
-import { GetThreeWords } from '@presentation/controllers'
+import { GetThreeWordsController } from '@presentation/controllers'
 import { MissingParamError, TypeVerificationError } from '@presentation/errors'
 import { CalculateSimilarity } from '@presentation/helpers'
 import {IController} from '@presentation/protocols'
@@ -19,7 +19,7 @@ const makeSut = ():SutTypes => {
     const validatorSpy = new MockValidator()
     const database = []
     const similaritySpy = new MockCalculateSimilarity()
-    const sut = new GetThreeWords(validatorSpy, similaritySpy)
+    const sut = new GetThreeWordsController(validatorSpy, similaritySpy)
     return {
         sut,
         validators: validatorSpy,
