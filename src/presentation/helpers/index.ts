@@ -1,2 +1,2 @@
-export {CalculateSimilarity} from './calculate-similarity'
+export {LevenshteinAlgorithm} from './levenshtein-algorithm'
 export * from './responses'

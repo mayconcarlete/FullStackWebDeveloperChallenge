@@ -3,7 +3,7 @@ import { ISimilarityAlgorithm } from "@presentation/protocols/similarity";
 import { IDatabase } from '@presentation/protocols/database';
 
 
-export class CalculateSimilarity implements ISimilarityAlgorithm{
+export class LevenshteinAlgorithm implements ISimilarityAlgorithm{
     
     private closestsWords:string[] = []
     

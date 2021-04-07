@@ -1,5 +1,5 @@
 import { ISimilarityAlgorithm } from "@presentation/protocols/similarity"
-import { CalculateSimilarity } from "@presentation/helpers/calculate-similarity"
+import { LevenshteinAlgorithm } from "@presentation/helpers/levenshtein-algorithm"
 import { MockDatabase } from "../mocks/mock-database"
 
 type SutTypes = {
@@ -9,7 +9,7 @@ type SutTypes = {
 
 const makeSut = ():SutTypes => {
     const databaseSpy = new MockDatabase() 
-    const sut = new CalculateSimilarity(databaseSpy)
+    const sut = new LevenshteinAlgorithm(databaseSpy)
     return {
         sut,
         mockDatabase:databaseSpy
