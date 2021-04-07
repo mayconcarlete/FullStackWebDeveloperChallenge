@@ -23,7 +23,6 @@
 
 >## Methodology and Design:
 * TDD
-* DDD
 * Conventional Commits
 * Modular Design
 
