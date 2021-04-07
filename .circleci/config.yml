@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: login
+          command: docker login -u mayconcarleterodrigues -p $DOCKER_PASSWORD
+      - run:
+          name: docker build 
+          command: docker build -t mayconcarleterodrigues/app .
+      - run:
+          name: docker push 
+          command: docker push mayconcarleterodrigues/app
