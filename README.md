@@ -1,4 +1,36 @@
 # Full Stack Web Developer Challenge
+
+> ## Principles:
+* SRP - Single Responsability Principle
+* OCP - Open Closed Principle
+* LSP - Liskov Substitution Principle
+* ISP - Interface Segregation Principle
+* DIP - Dependency Inversion Principle
+* SOC - Separation of Concerns
+* DRY - Don't Repeat Yourself
+* KISS - Keep It Simple, Silly
+* Composition Over Inheritance
+* Small Commits
+
+> ## Design Patterns:
+* Factory
+* Adapter
+* Dependency Injection 
+* Singleton
+
+>## Healthy Commits only:
+* Using Husky with Lint-Staged to make sure that only will be commit/push, code that pass in all tests.
+
+>## Methodology and Design:
+* TDD
+* DDD
+* Conventional Commits
+* Modular Design
+
+>## Todo List:
+* Docker support
+* Circle-Ci support
+
 ## Task Description
 Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.
 
