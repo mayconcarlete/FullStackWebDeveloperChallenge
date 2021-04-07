@@ -1,9 +1,9 @@
 import {closest} from 'fastest-levenshtein'
-import { ISimilarity } from "@presentation/protocols/similarity";
+import { ISimilarityAlgorithm } from "@presentation/protocols/similarity";
 import { IDatabase } from '@presentation/protocols/database';
 
 
-export class CalculateSimilarity implements ISimilarity{
+export class CalculateSimilarity implements ISimilarityAlgorithm{
     
     private closestsWords:string[] = []
     

@@ -1,9 +1,9 @@
-import { ISimilarity } from "@presentation/protocols/similarity"
+import { ISimilarityAlgorithm } from "@presentation/protocols/similarity"
 import { CalculateSimilarity } from "@presentation/helpers/calculate-similarity"
 import { MockDatabase } from "../mocks/mock-database"
 
 type SutTypes = {
-    sut:ISimilarity,
+    sut:ISimilarityAlgorithm,
     mockDatabase: MockDatabase
 }
 

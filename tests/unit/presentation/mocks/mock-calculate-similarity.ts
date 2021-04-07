@@ -1,6 +1,6 @@
-import { ISimilarity } from "@presentation/protocols/similarity";
+import { ISimilarityAlgorithm } from "@presentation/protocols/similarity";
 
-export class MockCalculateSimilarity implements ISimilarity{
+export class MockCalculateSimilarity implements ISimilarityAlgorithm{
     database:string[] = []
     closestsWords:string[] = []
     calculateSimilarity(word: string): Promise<string[]> {
