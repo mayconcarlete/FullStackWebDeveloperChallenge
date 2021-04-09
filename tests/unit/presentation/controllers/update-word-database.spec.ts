@@ -1,4 +1,4 @@
-import { UpdateWordDatabase } from "@presentation/controllers/update-word-database"
+import { UpdateWordDatabaseController } from "@presentation/controllers/update-word-database"
 import { MissingParamError } from "@presentation/errors"
 import { IController } from "@presentation/protocols"
 import { THttpRequest, THttpResponse } from "@presentation/types"
@@ -12,7 +12,7 @@ type SutTypes = {
 
 const makeSut = ():SutTypes => {
     const validatorSpy =  new MockValidator()
-    const sut = new UpdateWordDatabase(validatorSpy)
+    const sut = new UpdateWordDatabaseController(validatorSpy)
     return {sut, validatorSpy}
 }
 
