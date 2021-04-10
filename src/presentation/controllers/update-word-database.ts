@@ -1,3 +1,4 @@
+import { AlreadyExistsInDb } from "@presentation/errors";
 import { badRequest, ok, serverError } from "@presentation/helpers";
 import { IController, IUpdateDabase } from "@presentation/protocols";
 import { IValidate } from "@presentation/protocols/validate";
@@ -16,6 +17,9 @@ export class UpdateWordDatabaseController implements IController{
             }
             const word = request.params.word
             const wordInserted = await this.updateDatabase.insert(word)
+            if(!wordInserted){
+                return badRequest(new AlreadyExistsInDb(word))
+            }
             return ok('Hello World')
     }catch(e){
         return serverError(e)
