@@ -12,13 +12,13 @@ export class UpdateWordDatabaseController implements IController{
         try{
             const error = this.validators.validate(request.params)
             if(error){
-                return new Promise(resolve => resolve(badRequest(error)))
+                return badRequest(error)
             }
             const word = request.params.word
             const wordInserted = await this.updateDatabase.insert(word)
-            return new Promise(resolve => resolve(ok("Hello World")))
+            return ok('Hello World')
     }catch(e){
-        return new Promise(resolve => resolve(serverError(e)))
+        return serverError(e)
         }
     }
 }
