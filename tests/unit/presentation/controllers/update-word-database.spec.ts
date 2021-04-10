@@ -2,18 +2,21 @@ import { UpdateWordDatabaseController } from "@presentation/controllers/update-w
 import { MissingParamError } from "@presentation/errors"
 import { IController } from "@presentation/protocols"
 import { THttpRequest, THttpResponse } from "@presentation/types"
+import { MockUpdateDatabaseSpy } from "../mocks/mock-insert-database"
 import { MockValidator } from "../mocks/mock-validatior"
 
 type SutTypes = {
     sut: IController,
     validatorSpy: MockValidator
+    updateDatabaseSpy: MockUpdateDatabaseSpy
 }
 
 
 const makeSut = ():SutTypes => {
     const validatorSpy =  new MockValidator()
-    const sut = new UpdateWordDatabaseController(validatorSpy)
-    return {sut, validatorSpy}
+    const updateDatabaseSpy = new MockUpdateDatabaseSpy()
+    const sut = new UpdateWordDatabaseController(validatorSpy, updateDatabaseSpy)
+    return {sut, validatorSpy, updateDatabaseSpy}
 }
 
 describe('Update Word Database class', () => {
@@ -40,5 +43,16 @@ describe('Update Word Database class', () => {
         const response:THttpResponse = await sut.handle(request)
         expect(response.statusCode).toBe(400)
         expect(response.body).toEqual(validatorSpy.error)
+    })
+
+    test('Should call insert with correct params', async () => {
+        const { sut, updateDatabaseSpy } = makeSut()
+        const request:THttpRequest = {
+            params:{
+                word: "valid_word"
+            }
+        }
+        const response = await sut.handle(request)
+        expect(updateDatabaseSpy.word).toBe(request.params.word)
     })
 })
