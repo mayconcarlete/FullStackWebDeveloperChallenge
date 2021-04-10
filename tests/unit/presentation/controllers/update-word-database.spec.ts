@@ -1,5 +1,5 @@
 import { UpdateWordDatabaseController } from "@presentation/controllers/update-word-database"
-import { MissingParamError } from "@presentation/errors"
+import { AlreadyExistsInDb, MissingParamError } from "@presentation/errors"
 import { IController } from "@presentation/protocols"
 import { THttpRequest, THttpResponse } from "@presentation/types"
 import { MockUpdateDatabaseSpy } from "../mocks/mock-insert-database"
@@ -54,5 +54,18 @@ describe('Update Word Database class', () => {
         }
         const response = await sut.handle(request)
         expect(updateDatabaseSpy.word).toBe(request.params.word)
+    })
+
+    test('Should return 400 if word could not be inserted', async () => {
+        const {sut, updateDatabaseSpy} = makeSut()
+        updateDatabaseSpy.result = false
+        const request:THttpRequest = {
+            params:{
+                word: "invalid_word"
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(400)
+        expect(response.body).toEqual(new AlreadyExistsInDb(request.params.word))
     })
 })
