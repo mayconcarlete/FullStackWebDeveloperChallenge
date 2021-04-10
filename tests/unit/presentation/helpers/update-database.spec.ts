@@ -22,6 +22,17 @@ describe('Insert Database class', () => {
         expect(resultOfInsert).toBeFalsy()
     })
 
+    test('Should throw when database throws', async() => {
+        const {sut, databaseSpy} = makeSut()
+        const word = 'valid_word'
+        jest.spyOn(databaseSpy, 'create').mockImplementationOnce(async () =>{
+            return new Promise(() => {
+                throw new Error('something wrong with server')
+            })
+        })
+        await expect(sut.insert(word)).rejects.toThrow()
+    })
+
     test('Should return an updated word when insert in database', async () => {
         const {sut} = makeSut()
         const wordToUpdate = 'valid_word'
