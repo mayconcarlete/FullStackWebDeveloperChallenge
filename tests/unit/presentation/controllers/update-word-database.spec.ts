@@ -20,7 +20,7 @@ const makeSut = ():SutTypes => {
 }
 
 describe('Update Word Database class', () => {
-    test('Should return 200 when a request succeeds', async () => {
+    test('Should return 200 and word when a request succeeds', async () => {
         const {sut} = makeSut()
         const request:THttpRequest = {
             params:{
@@ -29,7 +29,7 @@ describe('Update Word Database class', () => {
         }
         const response:THttpResponse = await sut.handle(request)
         expect(response.statusCode).toBe(200)
-        expect(response.body).toBe("Hello World")
+        expect(response.body).toBe(request.params.word)
     })
     
     test('Should return 400 when validation fails', async() => {
