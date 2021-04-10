@@ -68,4 +68,21 @@ describe('Update Word Database class', () => {
         expect(response.statusCode).toBe(400)
         expect(response.body).toEqual(new AlreadyExistsInDb(request.params.word))
     })
+
+    test('Should return 500 when insert database throws', async () => {
+        const {sut, updateDatabaseSpy} = makeSut()
+        jest.spyOn(updateDatabaseSpy, 'insert').mockImplementationOnce(async () => {
+            return new Promise(() => {
+                throw new Error()
+            })
+        })
+        const request:THttpRequest = {
+            params:{
+                word:"valid_word"
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(500)
+        expect(response.body).toEqual(new Error())
+    })
 })
