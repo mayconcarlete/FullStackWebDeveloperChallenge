@@ -20,7 +20,7 @@ export class UpdateWordDatabaseController implements IController{
             if(!wordInserted){
                 return badRequest(new AlreadyExistsInDb(word))
             }
-            return ok('Hello World')
+            return ok(word)
     }catch(e){
         return serverError(e)
         }
