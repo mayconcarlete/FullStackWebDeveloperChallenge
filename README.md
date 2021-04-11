@@ -29,7 +29,8 @@
 >## Top Level Architecture
 >### GetThreeWordsController
 ![alt text](https://user-images.githubusercontent.com/6265325/114273921-835d5780-99f2-11eb-951c-a572f0144f00.png)
-
+>### UpdateWordController
+![alt text](https://user-images.githubusercontent.com/6265325/114314178-00123380-9ad0-11eb-9122-3fd6161bdbef.png)
 
 >## Todo List:
 * Docker support
