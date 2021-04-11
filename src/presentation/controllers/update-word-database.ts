@@ -15,7 +15,7 @@ export class UpdateWordDatabaseController implements IController{
             if(error){
                 return badRequest(error)
             }
-            const word = request.params.word
+            const word = request.params.word.toUpperCase()
             const wordInserted = await this.updateDatabase.insert(word)
             if(!wordInserted){
                 return badRequest(new AlreadyExistsInDb(word))

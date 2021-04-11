@@ -1,0 +1,23 @@
+import { Database } from "@infra/database";
+import { createFakeConnection } from "@infra/database/fake-database-config";
+import { UpdateWordDatabaseController } from "@presentation/controllers/update-word-database";
+import { InsertDatabase } from "@presentation/helpers/insert-database";
+import { ParseInt, RequiredField, TypeVerification, ValidatorComposite } from "@presentation/validators";
+
+export const makeUpdateWordController =async  ():Promise<UpdateWordDatabaseController> => {
+    const fieldName = 'word'
+    
+    const arrayOfValidations = []
+    arrayOfValidations.push(new RequiredField(fieldName))
+    arrayOfValidations.push(new TypeVerification(fieldName, 'string'))
+    arrayOfValidations.push(new ParseInt(fieldName))
+    
+    const validators = new ValidatorComposite(arrayOfValidations)
+
+    const createDatabaseFromTxt = await createFakeConnection()
+    const database = Database.getInstance(createDatabaseFromTxt)
+    const insertInDatabase = new InsertDatabase(database)
+
+    const updateWordDatabaseController = new UpdateWordDatabaseController(validators, insertInDatabase)
+    return updateWordDatabaseController
+}
