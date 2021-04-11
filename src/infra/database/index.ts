@@ -21,6 +21,10 @@ export class Database implements IDatabase, IInsertDatabase {
 
     async create(word: string): Promise<boolean> {
         return new Promise(resolve => {
+            if(this.database.includes(word)){
+                resolve(false)
+            }
+            this.database.push(word)
             resolve(true)
         })
     }
