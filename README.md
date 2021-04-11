@@ -26,7 +26,7 @@
 * Conventional Commits
 * Modular Design
 
->## Top Level Architecture
+>## Top Level Architecture Design
 >### GetThreeWordsController
 ![alt text](https://user-images.githubusercontent.com/6265325/114273921-835d5780-99f2-11eb-951c-a572f0144f00.png)
 >### UpdateWordController
