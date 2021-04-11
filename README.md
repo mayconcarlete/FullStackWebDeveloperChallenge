@@ -36,6 +36,11 @@
 * Docker support
 * Circle-Ci support
 
+>## Start Application
+* npm run test:unit to run unit tests
+* npm run test:e2e to run end-to-end tests
+* npm run dev to run the application in development mode(nodemon).
+
 ## Task Description
 Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.
 
