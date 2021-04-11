@@ -1,7 +1,8 @@
 import { IDatabase } from "@presentation/protocols/database"
+import { IInsertDatabase } from "@presentation/protocols/insert-database"
 
 
-export class Database implements IDatabase {
+export class Database implements IDatabase, IInsertDatabase {
     private static instance: Database
     
     private constructor(
@@ -16,5 +17,11 @@ export class Database implements IDatabase {
     }    
     async getDatabase():Promise<string[]> {
         return new Promise( resolve => resolve(this.database))
+    }
+
+    async create(word: string): Promise<boolean> {
+        return new Promise(resolve => {
+            resolve(true)
+        })
     }
 }
