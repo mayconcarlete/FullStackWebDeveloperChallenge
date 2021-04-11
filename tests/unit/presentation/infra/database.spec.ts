@@ -17,4 +17,12 @@ describe('Database class', () => {
         const addedWordResult = await sut.create(word)
         expect(addedWordResult).toBe(true)
     })
+
+    test('Should return false when word already exists in Database', async () => {
+        const { sut } = makeSut()
+        const word = "valid_word"
+        await sut.create(word)
+        const resultOfInsert = await sut.create(word)
+        expect(resultOfInsert).toBeFalsy()
+    })
 })
