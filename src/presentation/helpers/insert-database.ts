@@ -6,7 +6,7 @@ export class InsertDatabase implements IUpdateDabase{
         private readonly database: IInsertDatabase
     ){}
     async insert(word: string): Promise<boolean> {
-        const resultOfInsert = await this.database.create(word)
+        const resultOfInsert = await this.database.create(word.toUpperCase())
         if(!resultOfInsert){
             return false
         }
