@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "test": "jest --runInBand --no-cache --verbose --passWithNoTests",
-    "test:coverage":"jest --runInBand --no-cache --verbose --collect-coverage --passWithNoTests",
+    "test:coverage": "jest --runInBand --no-cache --verbose --collect-coverage --passWithNoTests",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:e2e": "npm test -- --watch -c jest-e2e-config.js",
     "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
@@ -29,6 +29,7 @@
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.37",
     "@types/supertest": "^2.0.11",
+    "@types/swagger-ui-express": "^4.1.2",
     "copyfiles": "^2.4.1",
     "git-commit-msg-linter": "^3.1.0",
     "husky": "^4.2.5",
@@ -45,7 +46,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "fastest-levenshtein": "^1.0.12",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "swagger-ui-express": "^4.1.6"
   },
   "_moduleAliases": {
     "@presentation": "dist/presentation",
