@@ -30,9 +30,12 @@
 >### GetThreeWordsController
 ![alt text](https://user-images.githubusercontent.com/6265325/114273921-835d5780-99f2-11eb-951c-a572f0144f00.png)
 >### UpdateWordController
-![alt text](https://user-images.githubusercontent.com/6265325/114314178-00123380-9ad0-11eb-9122-3fd6161bdbef.png)
+![alt text](https://user-images.githubusercontent.com/6265325/114584235-d46e8500-9c58-11eb-9dcf-dc696e4799c9.png)
+>### DeleteWordController
+![alt text](https://user-images.githubusercontent.com/6265325/114584238-d5071b80-9c58-11eb-8097-daf7e9c1d03d.png)
 
 >## Todo List:
+* Swagger Docs
 * Docker support
 * Circle-Ci support
 
