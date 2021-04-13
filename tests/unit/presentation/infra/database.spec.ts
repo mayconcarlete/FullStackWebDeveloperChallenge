@@ -33,4 +33,11 @@ describe('Database class', () => {
         const resultOfDelete = await sut.delete(wordToDelete)
         expect(resultOfDelete).toBeTruthy()
     })
+
+    test('Should return false when word to delete does not exsits in database', async() => {
+        const {sut} = makeSut()
+        const wordToDelete = 'invalid_word'
+        const resultOfDelete = await sut.delete(wordToDelete)
+        expect(resultOfDelete).toBeFalsy()
+    })
 })
