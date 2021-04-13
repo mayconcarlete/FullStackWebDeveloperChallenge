@@ -1,8 +1,9 @@
 import { IDatabase } from "@presentation/protocols/database"
+import { IDeleteDatabase } from "@presentation/protocols/delete-database"
 import { IInsertDatabase } from "@presentation/protocols/insert-database"
 
 
-export class Database implements IDatabase, IInsertDatabase {
+export class Database implements IDatabase, IInsertDatabase, IDeleteDatabase {
     private static instance: Database
     
     private constructor(
@@ -26,12 +27,14 @@ export class Database implements IDatabase, IInsertDatabase {
             return new Promise(resolve => resolve(true))
         }
         return new Promise(resolve => resolve(false))
-        // return new Promise(resolve => {
-        //     if(this.database.includes(word)){
-        //        return resolve(false)
-        //     }
-        //     this.database.push(word)
-        //     return resolve(true)
-        // })
+    }
+    async delete(word: string): Promise<boolean> {
+        if(this.database.includes(word)){
+            this.database.filter((value) => {
+                return value !== word
+            })
+            return true
+        }
+        return false
     }
 }
