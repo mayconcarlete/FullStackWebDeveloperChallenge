@@ -39,4 +39,20 @@ describe('Delete Word Controller class', () =>{
         expect(response.statusCode).toBe(400)
         expect(response.body).toEqual(new NotExistsInDatabase(request.params.word))
     })
+
+    test('Should return 500 if DeleteWord helper throws', async () => {
+        const {sut, mockDatabaseSpy} = makeSut()
+        const request:THttpRequest = {
+            params:{
+                word:'any_word'
+            }
+        }
+        jest.spyOn(mockDatabaseSpy, 'delete').mockImplementationOnce(async () => {
+            return new Promise(() => {
+                throw new Error()
+            })
+        })
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(500)
+    })
 })
