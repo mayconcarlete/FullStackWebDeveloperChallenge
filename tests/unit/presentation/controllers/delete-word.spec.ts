@@ -1,17 +1,20 @@
 import { DeleteWordController } from "@presentation/controllers/delete-word-database"
-import { NotExistsInDatabase } from "@presentation/errors"
+import { MissingParamError, NotExistsInDatabase } from "@presentation/errors"
 import { THttpRequest } from "@presentation/types"
 import { MockDeleteWordDatabase } from "../mocks/mock-delete-database"
+import { MockValidator } from "../mocks/mock-validatior"
 
 type SutTypes = {
     sut:DeleteWordController
+    mockValidatorSpy: MockValidator
     mockDatabaseSpy:MockDeleteWordDatabase
 }
 
 const makeSut = ():SutTypes => {
+    const mockValidatorSpy = new MockValidator()
     const mockDatabaseSpy = new MockDeleteWordDatabase()
-    const sut = new DeleteWordController(mockDatabaseSpy)
-    return { sut, mockDatabaseSpy }
+    const sut = new DeleteWordController(mockValidatorSpy, mockDatabaseSpy)
+    return { sut, mockValidatorSpy, mockDatabaseSpy }
 }
 
 describe('Delete Word Controller class', () =>{
@@ -25,6 +28,19 @@ describe('Delete Word Controller class', () =>{
         const response = await sut.handle(request)
         expect(response.statusCode).toBe(200)
         expect(response.body).toBe(request.params.word)
+    })
+
+    test('Should return 400 when any validator fails', async() => {
+        const {sut , mockValidatorSpy} = makeSut()
+        mockValidatorSpy.error = new MissingParamError('word')
+        const request:THttpRequest = {
+            params:{
+                word:'invalid_param'
+            }
+        }
+        const response = await sut.handle(request)
+        expect(response.statusCode).toBe(400)
+        expect(response.body).toEqual(new MissingParamError('word'))
     })
 
     test('Should return 400 when word doenst exists in database', async() => {
