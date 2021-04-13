@@ -1,4 +1,4 @@
-import { DeleteWordController } from "@presentation/controllers/delete-word-database"
+import { DeleteWordController } from "@presentation/controllers"
 import { MissingParamError, NotExistsInDatabase } from "@presentation/errors"
 import { THttpRequest } from "@presentation/types"
 import { MockDeleteWordDatabase } from "../mocks/mock-delete-database"

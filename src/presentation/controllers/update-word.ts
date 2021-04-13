@@ -4,7 +4,7 @@ import { IController, IUpdateDabase } from "@presentation/protocols";
 import { IValidate } from "@presentation/protocols/validate";
 import { THttpRequest, THttpResponse } from "@presentation/types";
 
-export class UpdateWordDatabaseController implements IController{
+export class UpdateWordController implements IController{
     constructor(
         private readonly validators: IValidate,
         private readonly updateDatabase: IUpdateDabase

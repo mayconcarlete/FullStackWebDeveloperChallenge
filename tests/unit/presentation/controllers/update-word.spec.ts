@@ -1,4 +1,4 @@
-import { UpdateWordDatabaseController } from "@presentation/controllers/update-word-database"
+import { UpdateWordController } from "@presentation/controllers"
 import { AlreadyExistsInDb, MissingParamError } from "@presentation/errors"
 import { IController } from "@presentation/protocols"
 import { THttpRequest, THttpResponse } from "@presentation/types"
@@ -15,7 +15,7 @@ type SutTypes = {
 const makeSut = ():SutTypes => {
     const validatorSpy =  new MockValidator()
     const updateDatabaseSpy = new MockUpdateDatabaseSpy()
-    const sut = new UpdateWordDatabaseController(validatorSpy, updateDatabaseSpy)
+    const sut = new UpdateWordController(validatorSpy, updateDatabaseSpy)
     return {sut, validatorSpy, updateDatabaseSpy}
 }
 
