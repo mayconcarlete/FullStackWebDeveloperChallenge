@@ -25,4 +25,12 @@ describe('Database class', () => {
         const resultOfInsert = await sut.create(word)
         expect(resultOfInsert).toBeFalsy()
     })
+
+    test('Should return true when word is deleted in database', async () => {
+        const {sut} = makeSut()
+        const wordToDelete = 'valid_word'
+        await sut.create(wordToDelete)
+        const resultOfDelete = await sut.delete(wordToDelete)
+        expect(resultOfDelete).toBeTruthy()
+    })
 })
