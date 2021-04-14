@@ -1,5 +1,5 @@
 import {threeWordsSchema, badRequest} from '@main/swagger/schemas'
-import { getThreeWordsPath,updateWordPath } from '@main/swagger/paths'
+import { getThreeWordsPath,updateWordPath, deleteWordPath } from '@main/swagger/paths'
 export default {
     openapi: '3.0.0',
     info:{
@@ -25,7 +25,8 @@ export default {
     ],
     paths:{
         '/get-three-words/{word}': getThreeWordsPath,
-        '/update-word/{word}': updateWordPath
+        '/update-word/{word}': updateWordPath,
+        '/delete-word/{word}': deleteWordPath
     },
     schemas:{
         threewords: threeWordsSchema,

@@ -5,5 +5,5 @@ import {Application, Express} from 'express'
 
 export default async function(app:Express){
     const deleteWordController = await makeDeleteWordController()
-    app.delete('delete-word/word', adaptRoute( deleteWordController ))
+    app.delete('/delete-word/:word', adaptRoute( deleteWordController ))
 }
