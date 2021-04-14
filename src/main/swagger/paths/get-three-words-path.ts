@@ -29,7 +29,7 @@ export const getThreeWordsPath = {
                 content:{
                     'application/json':{
                         schema:{
-                            $ref:'#/schemas/threewordsbadrequest'
+                            $ref:'#/schemas/badrequest'
                         }
                     }
                 }
