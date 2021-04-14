@@ -30,11 +30,9 @@ export class Database implements IDatabase, IInsertDatabase, IDeleteDatabase {
     }
     async delete(word: string): Promise<boolean> {
         if(this.database.includes(word)){
-            this.database.filter((value) => {
-                return value !== word
-            })
-            return true
+            this.database.splice(this.database.indexOf(word), 1)
+            return new Promise(resolve => resolve(true))
         }
-        return false
+        return new Promise(resolve => resolve(false))
     }
 }
