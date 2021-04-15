@@ -11,7 +11,8 @@
     "test:e2e": "npm test -- --watch -c jest-e2e-config.js",
     "build": "npm run clean && npx tsc -p tsconfig-build.json && npm run post-build",
     "post-build": "copyfiles -f ./src/infra/database/corpus/hemingway.txt ./dist/infra/database/corpus",
-    "dev": "npm run build && nodemon src/index.ts"
+    "dev": "npm run build && nodemon src/index.ts",
+    "prod": "npm run build && node dist/index"
   },
   "repository": {
     "type": "git",
