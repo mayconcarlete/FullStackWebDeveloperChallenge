@@ -34,15 +34,21 @@
 >### DeleteWordController
 ![alt text](https://user-images.githubusercontent.com/6265325/114584238-d5071b80-9c58-11eb-8097-daf7e9c1d03d.png)
 
->## Todo List:
-* Swagger Docs
-* Docker support
-* Circle-Ci support
 
 >## Start Application
+* npm i
 * npm run test:unit to run unit tests
 * npm run test:e2e to run end-to-end tests
+* npm run test:coverage to get coverage of files
 * npm run dev to run the application in development mode(nodemon).
+* You can test the api opening swagger docs or by routes
+* localhost:3000/api-docs
+
+>## Swagger
+![alt text](https://user-images.githubusercontent.com/6265325/114895636-0d883000-9de6-11eb-9f00-f0306fb60951.png)
+
+>## Test Driven Development is awesome
+![alt text](https://user-images.githubusercontent.com/6265325/114895532-f5b0ac00-9de5-11eb-97da-cd6e4cdeedd1.png)
 
 ## Task Description
 Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.
