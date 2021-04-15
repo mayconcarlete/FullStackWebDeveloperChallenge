@@ -1,20 +1,19 @@
-import { IDatabase } from "@presentation/protocols/database";
-import { IInsertDatabase } from "@presentation/protocols/insert-database";
+import { IDatabase } from '@presentation/protocols/database'
+import { IInsertDatabase } from '@presentation/protocols/insert-database'
 
-export class MockDatabase implements IDatabase, IInsertDatabase{
+export class MockDatabase implements IDatabase, IInsertDatabase {
+  error: Error|undefined
+  wordsInDb: string[] = []
 
-    error: Error|undefined
-    wordsInDb:string[] = []
-    
-    word: string =  ''
-    resultOfInsert = true
+  word: string = ''
+  resultOfInsert = true
 
-    async getDatabase(): Promise<string[]> {
-        return new Promise(resolve => resolve(this.wordsInDb))
-    }
+  async getDatabase (): Promise<string[]> {
+    return new Promise(resolve => resolve(this.wordsInDb))
+  }
 
-    async create(word: string): Promise<boolean> {
-        this.word = word
-        return this.resultOfInsert 
-    }
+  async create (word: string): Promise<boolean> {
+    this.word = word
+    return this.resultOfInsert
+  }
 }

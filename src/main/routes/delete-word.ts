@@ -1,9 +1,8 @@
 import { adaptRoute } from '@main/adapters/controller-adapter'
-import app from '@main/app'
 import { makeDeleteWordController } from '@main/factory/delete-word/make-delete-word-controller'
-import { Application, Express } from 'express'
+import { Express } from 'express'
 
-export default async function (app: Express) {
+export default async function (app: Express): Promise<void> {
   const deleteWordController = await makeDeleteWordController()
   app.delete('/delete-word/:word', adaptRoute(deleteWordController))
 }
