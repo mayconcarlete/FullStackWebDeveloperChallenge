@@ -1,7 +1,7 @@
 import { Database } from '@infra/database'
 import { createFakeConnection } from '@infra/database/fake-database-config'
 import { UpdateWordController } from '@presentation/controllers'
-import { InsertDatabase } from '@presentation/helpers/insert-database'
+import { InsertDatabase } from '@presentation/helpers'
 import { ParseInt, RequiredField, TypeVerification, ValidatorComposite } from '@presentation/validators'
 
 export const makeUpdateWordController = async (): Promise<UpdateWordController> => {

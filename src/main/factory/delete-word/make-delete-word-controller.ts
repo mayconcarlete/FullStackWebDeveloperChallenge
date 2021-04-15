@@ -1,7 +1,7 @@
 import { Database } from '@infra/database'
 import { createFakeConnection } from '@infra/database/fake-database-config'
 import { DeleteWordController } from '@presentation/controllers'
-import { DeleteDatabase } from '@presentation/helpers/delete-database'
+import { DeleteDatabase } from '@presentation/helpers'
 import { ParseInt, RequiredField, TypeVerification, ValidatorComposite } from '@presentation/validators'
 
 export const makeDeleteWordController = async (): Promise<DeleteWordController> => {
