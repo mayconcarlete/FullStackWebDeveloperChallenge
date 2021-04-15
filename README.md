@@ -50,6 +50,8 @@
 >## Test Driven Development is awesome
 ![alt text](https://user-images.githubusercontent.com/6265325/114895532-f5b0ac00-9de5-11eb-97da-cd6e4cdeedd1.png)
 
+>## Search algorithm used: Levenshtein
+
 ## Task Description
 Your task for this challenge is to create a small search engine comprising of two parts, a web-based user interface and a server component that exposes a REST API which provides search results retrieved from a corpus of text that will be provided to you in `corpus/hemingway.txt`.
 
