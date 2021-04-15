@@ -1,7 +1,6 @@
 export const threeWordsSchema = {
-    type: 'array',
-    items:{
-        type: 'string'
-    }
+  type: 'array',
+  items: {
+    type: 'string'
+  }
 }
-

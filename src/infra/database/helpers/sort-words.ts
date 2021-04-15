@@ -1,3 +1,3 @@
-export function sortWords(words:string[]){
-    return words.sort()
+export function sortWords (words: string[]) {
+  return words.sort()
 }

@@ -1,5 +1,5 @@
-import { THttpRequest, THttpResponse } from "../types";
+import { THttpRequest, THttpResponse } from '../types'
 
 export interface IController {
-    handle(request:THttpRequest):Promise<THttpResponse>
+  handle: (request: THttpRequest) => Promise<THttpResponse>
 }

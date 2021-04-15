@@ -1,5 +1,5 @@
-import { THttpRequest } from "@presentation/types";
+import { THttpRequest } from '@presentation/types'
 
 export interface IValidate{
-    validate(input:any):Error | undefined
+  validate: (input: any) => Error | undefined
 }

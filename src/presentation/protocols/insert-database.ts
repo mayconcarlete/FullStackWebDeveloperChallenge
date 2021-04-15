@@ -1,3 +1,3 @@
 export interface IInsertDatabase{
-    create(word:string):Promise<boolean>
+  create: (word: string) => Promise<boolean>
 }

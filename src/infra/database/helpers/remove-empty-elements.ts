@@ -1,3 +1,3 @@
-export function removeEmptyElements(arr:any){
-    return arr.filter( (element:string) => element.trim())
+export function removeEmptyElements (arr: any) {
+  return arr.filter((element: string) => element.trim())
 }

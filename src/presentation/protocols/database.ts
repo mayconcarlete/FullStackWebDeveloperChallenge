@@ -1,3 +1,3 @@
 export interface IDatabase {
-    getDatabase():Promise<string[]>
+  getDatabase: () => Promise<string[]>
 }

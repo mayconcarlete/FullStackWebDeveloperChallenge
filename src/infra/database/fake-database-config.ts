@@ -1,26 +1,26 @@
 import path from 'path'
 import {
-    readContentFromFile,
-    splitText,
-    removeEmptyElements,
-    removeTextSymbols,
-    joinContent,
-    removeNumbers,
-    uniqueWords,
-    upperCase,
-    sortWords
+  readContentFromFile,
+  splitText,
+  removeEmptyElements,
+  removeTextSymbols,
+  joinContent,
+  removeNumbers,
+  uniqueWords,
+  upperCase,
+  sortWords
 } from './helpers'
 
 const pathFile = path.join(__dirname, 'corpus', 'hemingway.txt')
 
 const symbols = [
-    '.', '?', '-', ',', '"', '♪',
-    '_', '<i>', '</i>', '\r', '[', ']',
-    '(', ')', ':', '*', '#'
+  '.', '?', '-', ',', '"', '♪',
+  '_', '<i>', '</i>', '\r', '[', ']',
+  '(', ')', ':', '*', '#'
 ]
 
-export async function createFakeConnection():Promise<string[]>{
-    return await readContentFromFile(pathFile)
+export async function createFakeConnection (): Promise<string[]> {
+  return await readContentFromFile(pathFile)
     .then(splitText('\n'))
     .then(removeEmptyElements)
     .then(removeTextSymbols(symbols))
@@ -31,4 +31,4 @@ export async function createFakeConnection():Promise<string[]>{
     .then(upperCase)
     .then(uniqueWords)
     .then(sortWords)
-}    
+}

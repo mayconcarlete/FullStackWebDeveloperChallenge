@@ -1,3 +1,3 @@
-export function uniqueWords(words:string[]){
-    return [...new Set(words)]
+export function uniqueWords (words: string[]) {
+  return [...new Set(words)]
 }

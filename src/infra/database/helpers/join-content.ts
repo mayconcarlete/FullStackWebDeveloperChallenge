@@ -1,3 +1,3 @@
-export function joinContent(arr:string[]){
-    return arr.join(' ')
+export function joinContent (arr: string[]) {
+  return arr.join(' ')
 }
