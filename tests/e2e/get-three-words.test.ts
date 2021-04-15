@@ -3,7 +3,7 @@ import app from '@main/app'
 import { TypeVerificationError } from '@presentation/errors'
 
 
-describe('Get Three Words class e2e', () => {
+describe('Get Three Words route e2e', () => {
     test('Should return an array and 200 code if no params are provided', async() => {
         const response = await supertest(app).get('/get-three-words/valid')
         expect(Array.isArray(response.body)).toBe(true)
