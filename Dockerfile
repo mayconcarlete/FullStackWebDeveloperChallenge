@@ -6,10 +6,15 @@ COPY . .
 
 RUN npm install
 
-RUN npm run build
+CMD [ "npm", "run", "build" ]
+
 
 FROM node:12
 
-COPY --from=builder '/app/dist' '/app'
+COPY --from=builder '/app/dist' '/app/dist'
 
-CMD [ "npm", "run", "prod" ]
+COPY --from=builder '/app/package.json' '/app'
+
+COPY --from=builder '/app/package-lock.json' '/app'
+
+CMD [ "npm", "run", "prod"]
