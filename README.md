@@ -36,13 +36,12 @@
 
 
 >## Start Application
-* npm i
-* npm run test:unit to run unit tests
-* npm run test:e2e to run end-to-end tests
-* npm run test:coverage to get coverage of files
-* npm run dev to run the application in development mode(nodemon).
-* You can test the api opening swagger docs or by routes
+* docker-compose up --build
+* You can test the api opening swagger docs or calling each specific route
 * localhost:3000/api-docs
+* localhost:3000/delete-word/:word
+* localhost:3000/get-three-words/:word
+* localhost:3000/update-word/:word
 
 >## Swagger
 ![alt text](https://user-images.githubusercontent.com/6265325/114895636-0d883000-9de6-11eb-9f00-f0306fb60951.png)
