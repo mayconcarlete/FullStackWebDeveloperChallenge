@@ -36,7 +36,7 @@
 
 
 >## Start Application
-* docker-compose up --build
+* docker-compose up
 * You can test the api opening swagger docs or calling each specific route
 * localhost:3000/api-docs
 * localhost:3000/delete-word/:word
