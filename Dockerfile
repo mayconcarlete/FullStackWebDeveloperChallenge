@@ -1,20 +1,29 @@
 FROM node:12 as builder
 
-WORKDIR '/app' 
+WORKDIR '/app'
 
 COPY . .
 
 RUN npm install
 
-CMD [ "npm", "run", "build" ]
+RUN npm run build
 
 
 FROM node:12
 
-COPY --from=builder '/app/dist' '/app/dist'
+WORKDIR '/app'
+
+COPY --from=builder '/app/dist' '/app'
 
 COPY --from=builder '/app/package.json' '/app'
 
 COPY --from=builder '/app/package-lock.json' '/app'
 
-CMD [ "npm", "run", "prod"]
+RUN ls -la
+
+RUN npm install --only=prod
+
+CMD [ "node", "index.js"]
+
+
+# docker run --rm -it --entrypoint /bin/sh fullstackwebdeveloperchallenge_api

@@ -58,8 +58,8 @@
     "swagger-ui-express": "^4.1.6"
   },
   "_moduleAliases": {
-    "@presentation": "dist/presentation",
-    "@main": "dist/main",
-    "@infra": "dist/infra"
+    "@presentation": "presentation",
+    "@main": "main",
+    "@infra": "infra"
   }
 }
