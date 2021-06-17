@@ -47,7 +47,9 @@
 >## Swagger
 ![alt text](https://user-images.githubusercontent.com/6265325/114895636-0d883000-9de6-11eb-9f00-f0306fb60951.png)
 
->## Test Driven Development is awesome
+>## Test Driven Development is awesome!
+* Coverage over all core system
+
 ![alt text](https://user-images.githubusercontent.com/6265325/114895532-f5b0ac00-9de5-11eb-97da-cd6e4cdeedd1.png)
 
 >## Search algorithm used: Levenshtein
