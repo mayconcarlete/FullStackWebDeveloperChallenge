@@ -11,20 +11,21 @@ jobs:
       - run:
           name: Unit tests
           command: make unit-test
-  build:
+  deploy-api:
+    working_directory: ~/app
     machine: true
-    steps:
+    steps:  
       - checkout
       - attach_workspace:
           at: ~/app
       - run:
-          name: login
-          command: docker login -u mayconcarleterodrigues -p $DOCKER_PASSWORD
+          name: Login docker
+          command: docker login -u mayconcarleterodrigues -p ${DOCKER_PASSWORD}
       - run:
-          name: docker build 
+          name: Docker Build
           command: docker build -t mayconcarleterodrigues/app -f ~/app/docker/build.Dockerfile .
       - run:
-          name: docker push 
+          name: Pushing image to docker hub
           command: docker push mayconcarleterodrigues/app
 
 workflows:
@@ -32,6 +33,6 @@ workflows:
   build_and_tests:
     jobs:
       - unit-test
-      - build:
+      - deploy-api:
           requires:
             - unit-test
