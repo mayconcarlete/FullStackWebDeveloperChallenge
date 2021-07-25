@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: create .env
+          name: creating .env
           command: |
-          echo "SERVER_PORT=${SERVER_POST} >> .env"
+          echo "SERVER_PORT=${SERVER_POST}" >> .env
       - run:
           name: Unit tests
           command: make unit-test
@@ -16,6 +16,8 @@ jobs:
     machine: true
     steps:
       - checkout
+      - attach_workspace: ~/app
+          - at: ~/app
       - run:
           name: login
           command: docker login -u mayconcarleterodrigues -p $DOCKER_PASSWORD
