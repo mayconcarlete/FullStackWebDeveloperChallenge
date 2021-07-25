@@ -2,6 +2,19 @@ version: '3'
 
 services:
     api:
-        build: .
+        env_file: 
+            - .env
+        build:
+            context: .
+            dockerfile: docker/build.Dockerfile
         ports:
-            - '3000:3000'
+            - '${SERVER_PORT}:${SERVER_PORT}'
+    
+    unit-test:
+        build:
+            context: .
+            dockerfile: docker/base-tests.Dockerfile
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        command: ["npm", "run", "test"]
