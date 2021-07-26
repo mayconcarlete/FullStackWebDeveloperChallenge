@@ -36,6 +36,7 @@
 
 
 >## Start Application
+* rename file .env.example to .env
 * docker-compose up
 * You can test the api opening swagger docs or calling each specific route
 * localhost:3000/api-docs
