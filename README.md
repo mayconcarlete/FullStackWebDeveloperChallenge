@@ -18,7 +18,7 @@
 * Dependency Injection 
 * Singleton
 
->## Healthy Commits only:
+>## Health Commits only:
 * Using Husky with Lint-Staged to make sure that only will be commit/push code that pass in all unit and integration tests.
 
 >## Methodology and Design:
