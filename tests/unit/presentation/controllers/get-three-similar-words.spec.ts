@@ -30,14 +30,18 @@ describe('Get Three Words class', () => {
       params: 'params_values',
       body: 'body_value'
     }
+
     await sut.handle(request)
+
     expect(validators.input).toEqual(request.params)
   })
   test('Should return 400 if param is not provided', async () => {
     const { sut, validators } = makeSut()
     const request: THttpRequest = {}
     validators.error = new MissingParamError('word')
+
     const response = await sut.handle(request)
+
     expect(response.body).toEqual(new MissingParamError('word'))
     expect(response.statusCode).toBe(400)
   })
@@ -45,14 +49,19 @@ describe('Get Three Words class', () => {
     const { sut, validators } = makeSut()
     const request: THttpRequest = { params: { word: 10 } }
     validators.error = new TypeVerificationError('word')
+
     const response = await sut.handle(request)
+
     expect(response.body).toEqual(new TypeVerificationError('word'))
     expect(response.statusCode).toBe(400)
   })
-  test('Should return undefined if validation succeeds', async () => {
-    const { sut, validators } = makeSut()
+  test('Should call calculateSimilarity with correct params', async () => {
+    const { sut, similarity } = makeSut()
+    const calculateSimilaritySpy = jest.spyOn(similarity, 'calculateSimilarity')
     const request: THttpRequest = { params: { word: 'any_word' } }
+
     await sut.handle(request)
-    expect(validators.error).toBeFalsy()
+
+    expect(calculateSimilaritySpy).toHaveBeenCalledWith('ANY_WORD')
   })
 })
