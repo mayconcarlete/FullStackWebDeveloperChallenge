@@ -84,6 +84,7 @@ describe('Get Three Words class', () => {
     })
 
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual(new Error('calculateSimilarity throws'))
   })

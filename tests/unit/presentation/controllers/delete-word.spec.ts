@@ -25,7 +25,9 @@ describe('Delete Word Controller class', () => {
         word: 'valid_word'
       }
     }
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(200)
     expect(response.body).toBe(request.params.word)
   })
@@ -38,12 +40,14 @@ describe('Delete Word Controller class', () => {
         word: 'invalid_param'
       }
     }
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new MissingParamError('word'))
   })
 
-  test('Should return 400 when word doenst exists in database', async () => {
+  test('Should return 400 when word doesnt exists in database', async () => {
     const { sut, mockDatabaseSpy } = makeSut()
     const request: THttpRequest = {
       params: {
@@ -51,7 +55,9 @@ describe('Delete Word Controller class', () => {
       }
     }
     mockDatabaseSpy.isDeleted = false
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new NotExistsInDatabase(request.params.word))
   })
@@ -68,7 +74,10 @@ describe('Delete Word Controller class', () => {
         throw new Error()
       })
     })
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(500)
+    expect(response.body).toEqual(new Error())
   })
 })

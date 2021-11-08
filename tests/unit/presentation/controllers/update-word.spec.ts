@@ -26,7 +26,9 @@ describe('Update Word Database class', () => {
         word: 'valid_word'
       }
     }
+
     const response: THttpResponse = await sut.handle(request)
+
     expect(response.statusCode).toBe(200)
     expect(response.body).toBe(request.params.word)
   })
@@ -39,7 +41,9 @@ describe('Update Word Database class', () => {
         word: ''
       }
     }
+
     const response: THttpResponse = await sut.handle(request)
+
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(validatorSpy.error)
   })
@@ -51,7 +55,9 @@ describe('Update Word Database class', () => {
         word: 'valid_word'
       }
     }
+
     await sut.handle(request)
+
     expect(updateDatabaseSpy.word).toBe(request.params.word)
   })
 
@@ -63,7 +69,9 @@ describe('Update Word Database class', () => {
         word: 'invalid_word'
       }
     }
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(400)
     expect(response.body).toEqual(new AlreadyExistsInDb(request.params.word))
   })
@@ -80,7 +88,9 @@ describe('Update Word Database class', () => {
         word: 'valid_word'
       }
     }
+
     const response = await sut.handle(request)
+
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual(new Error())
   })
