@@ -20,8 +20,11 @@ export class GetThreeWordsController implements IController {
       const similarWords = await this.similarityAlgorithm.calculateSimilarity(word.toUpperCase())
 
       return ok(similarWords)
-    } catch (e) {
-      return serverError(e)
+    } catch (error) {
+      if (error instanceof Error) {
+        return serverError(error)
+      }
+      throw error
     }
   }
 }
