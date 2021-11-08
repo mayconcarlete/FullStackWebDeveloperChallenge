@@ -74,4 +74,17 @@ describe('Get Three Words class', () => {
     expect(response.statusCode).toBe(200)
     expect(response.body).toEqual(['a', 'b', 'c'])
   })
+  test('Should throw if calculateSimlarity throws', async () => {
+    const { sut, similarity } = makeSut()
+    const request: THttpRequest = { params: { word: 'any_word' } }
+    jest.spyOn(similarity, 'calculateSimilarity').mockImplementationOnce(async () => {
+      return new Promise((resolve, reject) => {
+        throw new Error('calculateSimilarity throws')
+      })
+    })
+
+    const response = await sut.handle(request)
+    expect(response.statusCode).toBe(500)
+    expect(response.body).toEqual(new Error('calculateSimilarity throws'))
+  })
 })
