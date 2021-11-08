@@ -64,4 +64,14 @@ describe('Get Three Words class', () => {
 
     expect(calculateSimilaritySpy).toHaveBeenCalledWith('ANY_WORD')
   })
+  test('Should return 200 and an array with words on happy path', async () => {
+    const { sut, similarity } = makeSut()
+    const request: THttpRequest = { params: { word: 'any_word' } }
+    similarity.closestsWords = ['a', 'b', 'c']
+
+    const response = await sut.handle(request)
+
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toEqual(['a', 'b', 'c'])
+  })
 })
